@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Products_CRUD_Microservice.Constants.Products\Products_CRUD_Microservice.Constants.Products.csproj" />
     <ProjectReference Include="..\Products_CRUD_Microservice.Models.Products\Products_CRUD_Microservice.Models.Products.csproj" />
+    <ProjectReference Include="..\Products_CRUD_Microservice.SwaggerVersion\Products_CRUD_Microservice.SwaggerVersion.csproj" />
   </ItemGroup>
 
 </Project>

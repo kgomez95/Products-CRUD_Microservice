@@ -2,6 +2,11 @@
 {
     public class ProductsValues
     {
+        public class Controller
+        {
+            public const string ROUTE = "api/v{version:apiVersion}/products";
+        }
+
         public class DbContext
         {
             public const string TABLE_NAME = "PRODUCTS";

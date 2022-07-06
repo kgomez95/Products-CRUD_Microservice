@@ -5,9 +5,11 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products-CRUD_Microservice", "Products-CRUD_Microservice\Products-CRUD_Microservice.csproj", "{52069664-E36B-4CF9-B2B5-23FB84BDE69E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_CRUD_Microservice.Models.Products", "Products_CRUD_Microservice.Models.Products\Products_CRUD_Microservice.Models.Products.csproj", "{E0C86027-9D1C-4B6A-A86C-70086802C63B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products_CRUD_Microservice.Models.Products", "Products_CRUD_Microservice.Models.Products\Products_CRUD_Microservice.Models.Products.csproj", "{E0C86027-9D1C-4B6A-A86C-70086802C63B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_CRUD_Microservice.Constants.Products", "Products_CRUD_Microservice.Constants.Products\Products_CRUD_Microservice.Constants.Products.csproj", "{D71C5D3C-5DCA-4412-B845-36F948A31857}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products_CRUD_Microservice.Constants.Products", "Products_CRUD_Microservice.Constants.Products\Products_CRUD_Microservice.Constants.Products.csproj", "{D71C5D3C-5DCA-4412-B845-36F948A31857}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_CRUD_Microservice.SwaggerVersion", "Products_CRUD_Microservice.SwaggerVersion\Products_CRUD_Microservice.SwaggerVersion.csproj", "{DBB5A6F4-0AA7-400D-8955-5CD8BB70A9B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D71C5D3C-5DCA-4412-B845-36F948A31857}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D71C5D3C-5DCA-4412-B845-36F948A31857}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D71C5D3C-5DCA-4412-B845-36F948A31857}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBB5A6F4-0AA7-400D-8955-5CD8BB70A9B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBB5A6F4-0AA7-400D-8955-5CD8BB70A9B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBB5A6F4-0AA7-400D-8955-5CD8BB70A9B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBB5A6F4-0AA7-400D-8955-5CD8BB70A9B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
