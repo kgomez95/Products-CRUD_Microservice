@@ -1,0 +1,23 @@
+[
+  {
+    "GroupName": "v1.0",
+    "Version": "v1.0",
+    "Title": "Products",
+    "Description": "Versión 1.0 del CRUD de productos.",
+    "EndpointName": "Products V1.0"
+  },
+  {
+    "GroupName": "v1.1",
+    "Version": "v1.1",
+    "Title": "Products",
+    "Description": "Versión 1.1 del CRUD de productos.",
+    "EndpointName": "Products V1.1"
+  },
+  {
+    "GroupName": "v2.0",
+    "Version": "v2.0",
+    "Title": "Products",
+    "Description": "Versión 2.0 del CRUD de productos.",
+    "EndpointName": "Products V2.0"
+  }
+]

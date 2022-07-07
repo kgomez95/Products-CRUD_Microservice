@@ -2,6 +2,11 @@
 {
     public class ProductsValues
     {
+        public class Api
+        {
+            public const string DOCUMENTATION_FILE = "ProductsSwaggerDoc.json";
+        }
+
         public class Controller
         {
             public const string ROUTE = "api/v{version:apiVersion}/products";
