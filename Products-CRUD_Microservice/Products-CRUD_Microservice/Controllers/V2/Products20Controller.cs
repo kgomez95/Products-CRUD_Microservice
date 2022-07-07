@@ -9,7 +9,7 @@ namespace Products_CRUD_Microservice.Controllers.V2
     [Route(ProductsValues.Controller.ROUTE)]
     public class Products20Controller : ControllerBase
     {
-        [HttpGet("getByEnabled")]
+        [HttpGet(ProductsValues.Controller.Actions.GET_BY_ENABLED)]
         [MapToApiVersion("2.0")]
         public IActionResult GetByEnabled()
         {

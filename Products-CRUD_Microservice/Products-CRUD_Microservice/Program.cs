@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Products_CRUD_Microservice.DbContexts;
+using Products_CRUD_Microservice.Constants.Products;
+using Products_CRUD_Microservice.DbContexts.Products.DbContexts;
 using Products_CRUD_Microservice.SwaggerVersion;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -51,7 +52,7 @@ builder.Services.AddSwaggerGen(x =>
 
 // Añadimos el ProductContext y le especificamos la cadena de conexión del AppSettings.
 builder.Services.AddDbContext<ProductContext>(
-    options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+    options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection", x => x.MigrationsAssembly(ProductsValues.DbContext.MIGRATIONS_ASSEMBLY)));
 
 WebApplication app = builder.Build();
 

@@ -2,7 +2,7 @@
 using Products_CRUD_Microservice.Constants.Products;
 using Products_CRUD_Microservice.Models.Products.DAO;
 
-namespace Products_CRUD_Microservice.DbContexts
+namespace Products_CRUD_Microservice.DbContexts.Products.DbContexts
 {
     public class ProductContext : DbContext
     {

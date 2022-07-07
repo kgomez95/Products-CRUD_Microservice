@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Products_CRUD_Microservice.DbContexts;
+using Products_CRUD_Microservice.DbContexts.Products.DbContexts;
 
 #nullable disable
 
-namespace Products_CRUD_Microservice.Migrations
+namespace Products_CRUD_Microservice.Migrations.Products.Migrations
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20220705055452_ProductCreate")]
+    [Migration("20220707155421_ProductCreate")]
     partial class ProductCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace Products_CRUD_Microservice.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Products_CRUD_Microservice.Models.Product", b =>
+            modelBuilder.Entity("Products_CRUD_Microservice.Models.Products.DAO.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

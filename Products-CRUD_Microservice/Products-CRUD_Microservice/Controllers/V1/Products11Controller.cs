@@ -9,7 +9,7 @@ namespace Products_CRUD_Microservice.Controllers.V1
     [Route(ProductsValues.Controller.ROUTE)]
     public class Products11Controller : ControllerBase
     {
-        [HttpGet("getById")]
+        [HttpGet(ProductsValues.Controller.Actions.GET_BY_ID)]
         [MapToApiVersion("1.1")]
         public IActionResult GetById(int id)
         {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Products_CRUD_Microservice.Migrations
+namespace Products_CRUD_Microservice.Migrations.Products.Migrations
 {
     public partial class ProductCreate : Migration
     {

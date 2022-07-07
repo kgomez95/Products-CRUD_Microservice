@@ -5,12 +5,20 @@
         public class Controller
         {
             public const string ROUTE = "api/v{version:apiVersion}/products";
+
+            public class Actions
+            {
+                public const string GET_BY_ENABLED = "getByEnabled";
+                public const string GET_BY_ID = "getById";
+                public const string GET_BY_NAME = "getByName";
+            }
         }
 
         public class DbContext
         {
             public const string TABLE_NAME = "PRODUCTS";
             public const string PREFIX = "PRD_";
+            public const string MIGRATIONS_ASSEMBLY = "Products_CRUD_Microservice.Migrations.Products";
 
             public class Fields
             {
