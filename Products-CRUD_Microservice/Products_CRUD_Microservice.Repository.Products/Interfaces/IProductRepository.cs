@@ -1,6 +1,9 @@
-﻿namespace Products_CRUD_Microservice.Repository.Products.Interfaces
+﻿using Products_CRUD_Microservice.Models.Products.DAO;
+using Products_CRUD_Microservice.Repository.Interfaces;
+
+namespace Products_CRUD_Microservice.Repository.Products.Interfaces
 {
-    public interface IProductRepository
+    public interface IProductRepository: IGetRepository<Product>, ICreateRepository<Product>
     {
         
     }

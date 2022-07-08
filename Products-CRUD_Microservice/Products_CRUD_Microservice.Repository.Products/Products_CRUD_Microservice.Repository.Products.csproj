@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Products_CRUD_Microservice.DbContexts.Products\Products_CRUD_Microservice.DbContexts.Products.csproj" />
+    <ProjectReference Include="..\Products_CRUD_Microservice.Repository\Products_CRUD_Microservice.Repository.csproj" />
   </ItemGroup>
 
 </Project>
