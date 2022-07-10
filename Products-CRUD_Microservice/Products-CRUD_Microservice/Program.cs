@@ -1,10 +1,14 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Products_CRUD_Microservice.Constants.Products;
 using Products_CRUD_Microservice.DbContexts.Products.DbContexts;
+using Products_CRUD_Microservice.MapperProfiles;
 using Products_CRUD_Microservice.Repository.Products.Definitions;
 using Products_CRUD_Microservice.Repository.Products.Interfaces;
+using Products_CRUD_Microservice.Services.Products.Definitions;
+using Products_CRUD_Microservice.Services.Products.Interfaces;
 using Products_CRUD_Microservice.SwaggerVersion;
 using Products_CRUD_Microservice.SwaggerVersion.Models;
 
@@ -22,6 +26,7 @@ builder.Services.AddApiVersioning(config =>
     config.ReportApiVersions = true;
     config.AssumeDefaultVersionWhenUnspecified = true;
 });
+
 
 // Se recogen los documentos Swagger de productos.
 SwaggerDoc[] swaggerDocs = Documentation.GetDocumentations(Path.Combine(builder.Environment.ContentRootPath, ProductsValues.Api.DOCUMENTATION_FILE));
@@ -49,8 +54,19 @@ builder.Services.AddSwaggerGen(x =>
 builder.Services.AddDbContext<ProductContext>(
     options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection", x => x.MigrationsAssembly(ProductsValues.DbContext.MIGRATIONS_ASSEMBLY)));
 
+// Añadimos el perfil del automapper de productos y la injección de su servicio.
+MapperConfiguration mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new ProductProfile());
+});
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
+
 // Injección de repositorios.
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+// Injección de servicios.
+builder.Services.AddScoped<IProductService, ProductService>();
 
 WebApplication app = builder.Build();
 

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Products_CRUD_Microservice.Constants.Products;
+using Products_CRUD_Microservice.Models.Products.DTO;
+using Products_CRUD_Microservice.Services.Products.Interfaces;
 
 namespace Products_CRUD_Microservice.Controllers.V1
 {
@@ -9,16 +11,25 @@ namespace Products_CRUD_Microservice.Controllers.V1
     [Route(ProductsValues.Controller.ROUTE)]
     public class Products10Controller : ControllerBase
     {
-        public Products10Controller()
+        protected readonly IProductService _productService;
+
+        public Products10Controller(IProductService productService)
         {
-            
+            this._productService = productService;
         }
 
         [HttpGet(ProductsValues.Controller.Actions.GET_BY_ID)]
         [MapToApiVersion("1.0")]
         public IActionResult GetById(int id)
         {
-            return Ok(string.Format("¡Producto con ID '{0}' obtenido!", id));
+            ProductDTO productDTO = this._productService.GetById(id);
+
+            if (productDTO != null)
+            {
+                return Ok(productDTO);
+            }
+
+            return NotFound(string.Format("El producto con ID '{0}' no existe en nuestros sistemas.", id));
         }
 
         [HttpGet(ProductsValues.Controller.Actions.GET_BY_NAME)]

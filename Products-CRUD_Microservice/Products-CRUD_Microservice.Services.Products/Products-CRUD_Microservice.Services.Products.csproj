@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Products_CRUD_Microservice.Services.Products</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Products_CRUD_Microservice.Constants.Products\Products_CRUD_Microservice.Constants.Products.csproj" />
+    <ProjectReference Include="..\Products_CRUD_Microservice.Models.Products\Products_CRUD_Microservice.Models.Products.csproj" />
+    <ProjectReference Include="..\Products_CRUD_Microservice.Repository.Products\Products_CRUD_Microservice.Repository.Products.csproj" />
+    <ProjectReference Include="..\Products_CRUD_Microservice.Services\Products_CRUD_Microservice.Services.csproj" />
+  </ItemGroup>
+
+</Project>
