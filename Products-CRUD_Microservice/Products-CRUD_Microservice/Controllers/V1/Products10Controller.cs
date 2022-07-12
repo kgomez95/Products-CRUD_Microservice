@@ -26,17 +26,41 @@ namespace Products_CRUD_Microservice.Controllers.V1
 
             if (productDTO != null)
             {
-                return Ok(productDTO);
+                return base.Ok(productDTO);
             }
 
-            return NotFound(string.Format("El producto con ID '{0}' no existe en nuestros sistemas.", id));
+            return base.NotFound(string.Format("El producto con ID '{0}' no existe en nuestros sistemas.", id));
         }
 
         [HttpGet(ProductsValues.Controller.Actions.GET_BY_NAME)]
         [MapToApiVersion("1.0")]
         public IActionResult GetByName(string name)
         {
-            return Ok(string.Format("¡Producto con nombre '{0}' obtenido!", name));
+            try
+            {
+                // Comprobamos que la petición sea correcta. Si no lo es, devolvemos un error 400.
+                if (string.IsNullOrEmpty(name))
+                {
+                    return base.BadRequest("Es necesario especificar un nombre para filtrar por nombre de producto.");
+                }
+
+                // Llamamos al servicio para realizar la búsqueda del producto filtrando por nombre.
+                ProductDTO productDTO = this._productService.GetByName(name);
+
+                // Si no hay producto devolvemos un error 404.
+                if (productDTO == null)
+                {
+                    return base.NotFound(string.Format("El producto con nombre '{0}' no existe en nuestros sistemas.", name));
+                }
+
+                // Devolvemos el producto con un estado 200.
+                return base.Ok(productDTO);
+            }
+            catch (Exception ex)
+            {
+                // NOTE: Aquí pintaríamos la excepción en un fichero ".log".
+                return base.StatusCode(500, "Se ha producido un error general en el servicio. Por favor, contacte con un administrador.");
+            }
         }
 
         [HttpGet(ProductsValues.Controller.Actions.CREATE)]
@@ -46,8 +70,7 @@ namespace Products_CRUD_Microservice.Controllers.V1
             return Ok("¡Producto creado!");
         }
 
-        // TODO: Crear una interfaz común para todos los controladores en la que se definan las funciones básicas que van a implementar sí o sí todas las funciones (mirar si es posible utilizar esta
-        //       interfaz también para los servicios).
-        // TODO: Montar también un sistema de versiones para los servicios que se encarguen de realizar la lógica del programa, ya que no basta con hacer versioning solamente de los controladores.
+        // TODO: Intentar buscar alguna forma para no estar poniendo siempre "try catch" en todas las funciones del controlador. Intentar buscar algún método que sea común para todas las funciones,
+        //       de forma que se pinte un log con toda la información posible incluyendo la excepción.
     }
 }

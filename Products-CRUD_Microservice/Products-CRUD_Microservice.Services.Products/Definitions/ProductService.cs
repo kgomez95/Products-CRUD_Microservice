@@ -30,7 +30,7 @@ namespace Products_CRUD_Microservice.Services.Products.Definitions
             }
             catch (Exception ex)
             {
-                
+                // NOTE: Aquí pintaríamos la excepción en un fichero ".log".
             }
 
             return null;
@@ -38,7 +38,21 @@ namespace Products_CRUD_Microservice.Services.Products.Definitions
 
         public virtual ProductDTO GetByName(string name)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Product product = this._productRepository.GetByName(name);
+
+                if (product == null)
+                {
+                    return null;
+                }
+
+                return this._mapper.Map<ProductDTO>(product);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public virtual ProductDTO Create(ProductDTO recordDTO)

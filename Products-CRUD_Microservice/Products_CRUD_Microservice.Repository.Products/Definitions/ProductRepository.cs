@@ -40,7 +40,7 @@ namespace Products_CRUD_Microservice.Repository.Products.Definitions
         {
             try
             {
-                Product product = this._productContext.Products.FirstOrDefault(x => x.Name.Contains(name, StringComparison.InvariantCultureIgnoreCase));
+                Product product = this._productContext.Products.FirstOrDefault(x => x.Name.Equals(name));
                 return product;
             }
             catch (Exception ex)

@@ -28,6 +28,10 @@ builder.Services.AddApiVersioning(config =>
 });
 
 
+// TODO: Intentar hacer que Swagger muestre la estructura de las peticiones y de las respuestas de cada endpoint.
+//       Buscar en Google: "asp.net core 6 swagger request schema example"
+//       https://code-maze.com/swagger-ui-asp-net-core-web-api/
+
 // Se recogen los documentos Swagger de productos.
 SwaggerDoc[] swaggerDocs = Documentation.GetDocumentations(Path.Combine(builder.Environment.ContentRootPath, ProductsValues.Api.DOCUMENTATION_FILE));
 
