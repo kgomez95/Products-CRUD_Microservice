@@ -99,5 +99,9 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
         // TODO: Intentar buscar alguna forma para no estar poniendo siempre "try catch" en todas las funciones del controlador. Intentar buscar algún método que sea común para todas las funciones,
         //       de forma que se pinte un log con toda la información posible incluyendo la excepción.
         //       https://docs.microsoft.com/es-es/aspnet/core/web-api/handle-errors?view=aspnetcore-6.0
+
+
+        // TODO: Crear un middleware para controlar las excepciones:
+        //       https://stackoverflow.com/questions/43358224/how-can-i-throw-an-exception-in-an-asp-net-core-webapi-controller-that-returns-a
     }
 }

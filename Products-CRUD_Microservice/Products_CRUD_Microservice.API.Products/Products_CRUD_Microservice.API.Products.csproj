@@ -31,4 +31,6 @@
     <ProjectReference Include="..\Products_CRUD_Microservice.Utils\Products_CRUD_Microservice.Utils.csproj" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>
