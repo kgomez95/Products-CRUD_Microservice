@@ -17,30 +17,11 @@ namespace Products_CRUD_Microservice.Services.Products.Definitions
             this._productRepository = productRepository;
         }
 
-        public virtual ProductDTO GetById(int id)
+        public virtual ProductDTO? GetById(int id)
         {
             try
             {
-                Product product = this._productRepository.GetById(id);
-
-                if (product != null)
-                {
-                    return this._mapper.Map<ProductDTO>(product);
-                }
-            }
-            catch (Exception ex)
-            {
-                // NOTE: Aquí pintaríamos la excepción en un fichero ".log".
-            }
-
-            return null;
-        }
-
-        public virtual ProductDTO GetByName(string name)
-        {
-            try
-            {
-                Product product = this._productRepository.GetByName(name);
+                Product? product = this._productRepository.GetById(id);
 
                 if (product == null)
                 {
@@ -55,7 +36,26 @@ namespace Products_CRUD_Microservice.Services.Products.Definitions
             }
         }
 
-        public virtual ProductDTO Create(ProductDTO recordDTO)
+        public virtual ProductDTO? GetByName(string name)
+        {
+            try
+            {
+                Product? product = this._productRepository.GetByName(name);
+
+                if (product == null)
+                {
+                    return null;
+                }
+
+                return this._mapper.Map<ProductDTO>(product);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public virtual ProductDTO? Create(ProductDTO recordDTO)
         {
             throw new NotImplementedException();
         }

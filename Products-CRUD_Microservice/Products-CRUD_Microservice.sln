@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products_CRUD_Microservice.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products_CRUD_Microservice.Repository", "Products_CRUD_Microservice.Repository\Products_CRUD_Microservice.Repository.csproj", "{5D720881-8975-43AE-BD80-59BB68A58BCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products-CRUD_Microservice.Services.Products", "Products-CRUD_Microservice.Services.Products\Products-CRUD_Microservice.Services.Products.csproj", "{5A7F51C4-2D13-4D26-8873-FB02F91AF9FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products-CRUD_Microservice.Services.Products", "Products-CRUD_Microservice.Services.Products\Products-CRUD_Microservice.Services.Products.csproj", "{5A7F51C4-2D13-4D26-8873-FB02F91AF9FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_CRUD_Microservice.Services", "Products_CRUD_Microservice.Services\Products_CRUD_Microservice.Services.csproj", "{8746DB12-DBD4-4885-A447-9BF33750E840}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products_CRUD_Microservice.Services", "Products_CRUD_Microservice.Services\Products_CRUD_Microservice.Services.csproj", "{8746DB12-DBD4-4885-A447-9BF33750E840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_CRUD_Microservice.Utils", "Products_CRUD_Microservice.Utils\Products_CRUD_Microservice.Utils.csproj", "{872A1021-E856-4DF7-8CA2-2AD1AECA211C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{8746DB12-DBD4-4885-A447-9BF33750E840}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8746DB12-DBD4-4885-A447-9BF33750E840}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8746DB12-DBD4-4885-A447-9BF33750E840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{872A1021-E856-4DF7-8CA2-2AD1AECA211C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{872A1021-E856-4DF7-8CA2-2AD1AECA211C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{872A1021-E856-4DF7-8CA2-2AD1AECA211C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{872A1021-E856-4DF7-8CA2-2AD1AECA211C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

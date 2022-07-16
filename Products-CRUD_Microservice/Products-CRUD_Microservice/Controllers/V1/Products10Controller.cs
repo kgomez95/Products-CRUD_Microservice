@@ -22,7 +22,7 @@ namespace Products_CRUD_Microservice.Controllers.V1
         [MapToApiVersion("1.0")]
         public IActionResult GetById(int id)
         {
-            ProductDTO productDTO = this._productService.GetById(id);
+            ProductDTO? productDTO = this._productService.GetById(id);
 
             if (productDTO != null)
             {
@@ -45,7 +45,7 @@ namespace Products_CRUD_Microservice.Controllers.V1
                 }
 
                 // Llamamos al servicio para realizar la búsqueda del producto filtrando por nombre.
-                ProductDTO productDTO = this._productService.GetByName(name);
+                ProductDTO? productDTO = this._productService.GetByName(name);
 
                 // Si no hay producto devolvemos un error 404.
                 if (productDTO == null)
@@ -70,7 +70,34 @@ namespace Products_CRUD_Microservice.Controllers.V1
             return Ok("¡Producto creado!");
         }
 
+        //[Route("/error-development")]
+        //public IActionResult HandleErrorDevelopment([FromServices] IHostEnvironment hostEnvironment)
+        //{
+        //    if (!hostEnvironment.IsDevelopment())
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    IExceptionHandlerFeature exceptionHandlerFeature = HttpContext.Features.Get<IExceptionHandlerFeature>()!;
+
+        //    return Problem(
+        //        detail: exceptionHandlerFeature.Error.StackTrace,
+        //        title: exceptionHandlerFeature.Error.Message);
+        //}
+
+        //[Route("/error")]
+        //public IActionResult HandleError([FromServices] IHostEnvironment hostEnvironment)
+        //{
+        //    IExceptionHandlerFeature exceptionHandlerFeature = HttpContext.Features.Get<IExceptionHandlerFeature>()!;
+
+        //    // TODO: Mostrar error general y pintar logs.
+        //    //exceptionHandlerFeature.Error
+
+        //    throw new NotImplementedException();
+        //}
+
         // TODO: Intentar buscar alguna forma para no estar poniendo siempre "try catch" en todas las funciones del controlador. Intentar buscar algún método que sea común para todas las funciones,
         //       de forma que se pinte un log con toda la información posible incluyendo la excepción.
+        //       https://docs.microsoft.com/es-es/aspnet/core/web-api/handle-errors?view=aspnetcore-6.0
     }
 }

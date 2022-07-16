@@ -2,6 +2,6 @@
 {
     public interface ICreateRepository<T>
     {
-        T Create(T record);
+        T? Create(T record);
     }
 }

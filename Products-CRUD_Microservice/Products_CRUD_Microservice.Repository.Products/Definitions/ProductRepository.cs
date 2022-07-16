@@ -1,15 +1,19 @@
-﻿using Products_CRUD_Microservice.DbContexts.Products.DbContexts;
+﻿using Microsoft.Extensions.Logging;
+using Products_CRUD_Microservice.DbContexts.Products.DbContexts;
 using Products_CRUD_Microservice.Models.Products.DAO;
 using Products_CRUD_Microservice.Repository.Products.Interfaces;
+using Products_CRUD_Microservice.Utils.Extensions;
 
 namespace Products_CRUD_Microservice.Repository.Products.Definitions
 {
     public class ProductRepository : IProductRepository
     {
+        private readonly ILogger<ProductRepository> _logger;
         protected readonly ProductContext _productContext;
 
-        public ProductRepository(ProductContext productContext)
+        public ProductRepository(ProductContext productContext, ILogger<ProductRepository> logger)
         {
+            this._logger = logger;
             this._productContext = productContext;
         }
 
@@ -18,15 +22,16 @@ namespace Products_CRUD_Microservice.Repository.Products.Definitions
         /// </summary>
         /// <param name="id">Identificador del producto a buscar.</param>
         /// <returns>Retorna un producto o NULL en caso de que el producto no exista.</returns>
-        public virtual Product GetById(int id)
+        public virtual Product? GetById(int id)
         {
             try
             {
-                Product product = this._productContext.Products.FirstOrDefault(x => x.Id == id);
+                Product? product = this._productContext.Products.FirstOrDefault(x => x.Id == id);
                 return product;
             }
             catch (Exception ex)
             {
+                this._logger.LogError(ex, "(ProductRepository -> GetById) Id = {0}", id);
                 throw ex;
             }
         }
@@ -36,15 +41,16 @@ namespace Products_CRUD_Microservice.Repository.Products.Definitions
         /// </summary>
         /// <param name="id">Nombre del producto a buscar.</param>
         /// <returns>Retorna un producto o NULL en caso de que el producto no exista.</returns>
-        public virtual Product GetByName(string name)
+        public virtual Product? GetByName(string name)
         {
             try
             {
-                Product product = this._productContext.Products.FirstOrDefault(x => x.Name.Equals(name));
+                Product? product = this._productContext.Products.FirstOrDefault(x => x.Name.Equals(name));
                 return product;
             }
             catch (Exception ex)
             {
+                this._logger.LogError(ex, "(ProductRepository -> GetByName) Name = {0}", name ?? "");
                 throw ex;
             }
         }
@@ -54,7 +60,7 @@ namespace Products_CRUD_Microservice.Repository.Products.Definitions
         /// </summary>
         /// <param name="record">Producto a crear.</param>
         /// <returns>Retorna el producto que se ha creado con su identificador.</returns>
-        public virtual Product Create(Product record)
+        public virtual Product? Create(Product record)
         {
             try
             {
@@ -64,6 +70,7 @@ namespace Products_CRUD_Microservice.Repository.Products.Definitions
             }
             catch (Exception ex)
             {
+                this._logger.LogError(ex, "(ProductRepository -> Create) Record = {0}", (record != null) ? record.ToJSON() : "");
                 throw ex;
             }
         }

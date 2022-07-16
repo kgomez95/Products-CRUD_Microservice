@@ -11,13 +11,33 @@ using Products_CRUD_Microservice.Services.Products.Definitions;
 using Products_CRUD_Microservice.Services.Products.Interfaces;
 using Products_CRUD_Microservice.SwaggerVersion;
 using Products_CRUD_Microservice.SwaggerVersion.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 // TODO: Crear un proyecto genérico, el cual pueda ser utilizado por todos los microservicios, y que se encargue de inicializar el Program (o Startup) del microservicio en cuestión.
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .ConfigureApiBehaviorOptions(options =>
+    {
+        options.InvalidModelStateResponseFactory = context =>
+            new BadRequestObjectResult(context.ModelState)
+            {
+                ContentTypes =
+                {
+                    // using static System.Net.Mime.MediaTypeNames;
+                    Application.Json
+                }
+            };
+    })
+    .AddNewtonsoftJson(options =>
+    {
+        // Loop Include Fixed
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+        options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+    });
 
 // ApiVersioning.
 builder.Services.AddApiVersioning(config =>
@@ -85,6 +105,12 @@ if (app.Environment.IsDevelopment())
             x.SwaggerEndpoint(String.Format("/swagger/{0}/swagger.json", swaggerDoc.Version), swaggerDoc.EndpointName);
         }
     });
+
+    //app.UseExceptionHandler("/error-development");
+}
+else
+{
+    //app.UseExceptionHandler("/error");
 }
 
 app.UseHttpsRedirection();
