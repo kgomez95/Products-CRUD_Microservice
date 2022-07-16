@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Products_CRUD_Microservice.Constants.Products;
 
-namespace Products_CRUD_Microservice.Controllers.V1
+namespace Products_CRUD_Microservice.API.Products.Controllers.V1
 {
     [ApiController]
     [ApiVersion("1.1")]

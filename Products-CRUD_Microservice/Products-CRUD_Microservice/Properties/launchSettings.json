@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Products_CRUD_Microservice": {
+    "Products_CRUD_Microservice.API.Products": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

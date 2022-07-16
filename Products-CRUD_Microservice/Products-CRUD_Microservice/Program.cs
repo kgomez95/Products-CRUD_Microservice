@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Products_CRUD_Microservice.Constants.Products;
 using Products_CRUD_Microservice.DbContexts.Products.DbContexts;
-using Products_CRUD_Microservice.MapperProfiles;
+using Products_CRUD_Microservice.API.Products.MapperProfiles;
 using Products_CRUD_Microservice.Repository.Products.Definitions;
 using Products_CRUD_Microservice.Repository.Products.Interfaces;
 using Products_CRUD_Microservice.Services.Products.Definitions;

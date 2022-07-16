@@ -1,4 +1,4 @@
-namespace Products_CRUD_Microservice
+namespace Products_CRUD_Microservice.API.Products
 {
     public class WeatherForecast
     {

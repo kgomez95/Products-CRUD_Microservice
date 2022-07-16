@@ -3,7 +3,7 @@ using Products_CRUD_Microservice.Constants.Products;
 using Products_CRUD_Microservice.Models.Products.DTO;
 using Products_CRUD_Microservice.Services.Products.Interfaces;
 
-namespace Products_CRUD_Microservice.Controllers.V1
+namespace Products_CRUD_Microservice.API.Products.Controllers.V1
 {
     [ApiController]
     [ApiVersion("1.0")]

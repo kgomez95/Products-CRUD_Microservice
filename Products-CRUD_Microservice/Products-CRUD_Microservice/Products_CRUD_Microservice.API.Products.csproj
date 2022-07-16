@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Products_CRUD_Microservice</RootNamespace>
+    <RootNamespace>Products_CRUD_Microservice.API.Products</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
