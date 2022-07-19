@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Products-CRUD_Microservice.Services.Products\Products-CRUD_Microservice.Services.Products.csproj" />
+    <ProjectReference Include="..\Products_CRUD_Microservice.API\Products_CRUD_Microservice.API.csproj" />
     <ProjectReference Include="..\Products_CRUD_Microservice.Constants.Products\Products_CRUD_Microservice.Constants.Products.csproj" />
     <ProjectReference Include="..\Products_CRUD_Microservice.DbContexts.Products\Products_CRUD_Microservice.DbContexts.Products.csproj" />
     <ProjectReference Include="..\Products_CRUD_Microservice.Migrations.Products\Products_CRUD_Microservice.Migrations.Products.csproj" />

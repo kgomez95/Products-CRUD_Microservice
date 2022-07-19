@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products-CRUD_Microservice.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products_CRUD_Microservice.Services", "Products_CRUD_Microservice.Services\Products_CRUD_Microservice.Services.csproj", "{8746DB12-DBD4-4885-A447-9BF33750E840}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_CRUD_Microservice.Utils", "Products_CRUD_Microservice.Utils\Products_CRUD_Microservice.Utils.csproj", "{872A1021-E856-4DF7-8CA2-2AD1AECA211C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products_CRUD_Microservice.Utils", "Products_CRUD_Microservice.Utils\Products_CRUD_Microservice.Utils.csproj", "{872A1021-E856-4DF7-8CA2-2AD1AECA211C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products_CRUD_Microservice.API.Products", "Products_CRUD_Microservice.API.Products\Products_CRUD_Microservice.API.Products.csproj", "{477737CB-ECC6-4AD3-A9A0-7950D0192C8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_CRUD_Microservice.API", "Products_CRUD_Microservice.API\Products_CRUD_Microservice.API.csproj", "{3D7631C8-8C7F-4FBC-B3CC-E6668F1A32BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{477737CB-ECC6-4AD3-A9A0-7950D0192C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{477737CB-ECC6-4AD3-A9A0-7950D0192C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{477737CB-ECC6-4AD3-A9A0-7950D0192C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D7631C8-8C7F-4FBC-B3CC-E6668F1A32BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D7631C8-8C7F-4FBC-B3CC-E6668F1A32BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D7631C8-8C7F-4FBC-B3CC-E6668F1A32BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D7631C8-8C7F-4FBC-B3CC-E6668F1A32BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

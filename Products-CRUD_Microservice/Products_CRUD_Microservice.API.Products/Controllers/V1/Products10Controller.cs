@@ -36,31 +36,23 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
         [MapToApiVersion("1.0")]
         public IActionResult GetByName(string name)
         {
-            try
+            // Comprobamos que la petición sea correcta. Si no lo es, devolvemos un error 400.
+            if (string.IsNullOrEmpty(name))
             {
-                // Comprobamos que la petición sea correcta. Si no lo es, devolvemos un error 400.
-                if (string.IsNullOrEmpty(name))
-                {
-                    return base.BadRequest("Es necesario especificar un nombre para filtrar por nombre de producto.");
-                }
-
-                // Llamamos al servicio para realizar la búsqueda del producto filtrando por nombre.
-                ProductDTO? productDTO = this._productService.GetByName(name);
-
-                // Si no hay producto devolvemos un error 404.
-                if (productDTO == null)
-                {
-                    return base.NotFound(string.Format("El producto con nombre '{0}' no existe en nuestros sistemas.", name));
-                }
-
-                // Devolvemos el producto con un estado 200.
-                return base.Ok(productDTO);
+                return base.BadRequest("Es necesario especificar un nombre para filtrar por nombre de producto.");
             }
-            catch (Exception ex)
+
+            // Llamamos al servicio para realizar la búsqueda del producto filtrando por nombre.
+            ProductDTO? productDTO = this._productService.GetByName(name);
+
+            // Si no hay producto devolvemos un error 404.
+            if (productDTO == null)
             {
-                // NOTE: Aquí pintaríamos la excepción en un fichero ".log".
-                return base.StatusCode(500, "Se ha producido un error general en el servicio. Por favor, contacte con un administrador.");
+                return base.NotFound(string.Format("El producto con nombre '{0}' no existe en nuestros sistemas.", name));
             }
+
+            // Devolvemos el producto con un estado 200.
+            return base.Ok(productDTO);
         }
 
         [HttpGet(ProductsValues.Controller.Actions.CREATE)]

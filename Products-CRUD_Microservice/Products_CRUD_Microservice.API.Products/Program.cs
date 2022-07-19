@@ -12,6 +12,7 @@ using Products_CRUD_Microservice.Services.Products.Interfaces;
 using Products_CRUD_Microservice.SwaggerVersion;
 using Products_CRUD_Microservice.SwaggerVersion.Models;
 using static System.Net.Mime.MediaTypeNames;
+using Products_CRUD_Microservice.API.Middlewares;
 
 // TODO: Crear un proyecto genérico, el cual pueda ser utilizado por todos los microservicios, y que se encargue de inicializar el Program (o Startup) del microservicio en cuestión.
 
@@ -116,6 +117,8 @@ else
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.MapControllers();
 
