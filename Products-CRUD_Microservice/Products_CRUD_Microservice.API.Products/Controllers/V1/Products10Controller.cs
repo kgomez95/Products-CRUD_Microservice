@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Products_CRUD_Microservice.API.Models;
 using Products_CRUD_Microservice.Constants.Products;
 using Products_CRUD_Microservice.Models.Products.DTO;
 using Products_CRUD_Microservice.Services.Products.Interfaces;
+using System.Net;
 
 namespace Products_CRUD_Microservice.API.Products.Controllers.V1
 {
@@ -22,14 +24,22 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
         [MapToApiVersion("1.0")]
         public IActionResult GetById(int id)
         {
+            ApiResponse<ProductDTO>? response = null;
+
+            // Llamamos al servicio para realizar la búsqueda del producto filtrando por id.
             ProductDTO? productDTO = this._productService.GetById(id);
-            return base.Ok(productDTO);
+            response = new ApiResponse<ProductDTO>((int)HttpStatusCode.OK, productDTO);
+
+            // Devolvemos el producto con un estado 200.
+            return base.StatusCode(response.StatusCode, response);
         }
 
         [HttpGet(ProductsValues.Controller.Actions.GET_BY_NAME)]
         [MapToApiVersion("1.0")]
         public IActionResult GetByName(string name)
         {
+            ApiResponse<ProductDTO>? response = null;
+
             // Comprobamos que la petición sea correcta. Si no lo es, devolvemos un error 400.
             if (string.IsNullOrEmpty(name))
             {
@@ -38,9 +48,10 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
 
             // Llamamos al servicio para realizar la búsqueda del producto filtrando por nombre.
             ProductDTO? productDTO = this._productService.GetByName(name);
+            response = new ApiResponse<ProductDTO>((int)HttpStatusCode.OK, productDTO);
 
             // Devolvemos el producto con un estado 200.
-            return base.Ok(productDTO);
+            return base.StatusCode(response.StatusCode, response);
         }
 
         [HttpGet(ProductsValues.Controller.Actions.CREATE)]

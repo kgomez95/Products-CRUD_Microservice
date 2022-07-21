@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Products_CRUD_Microservice.API.Models;
 using Products_CRUD_Microservice.Exceptions;
+using Products_CRUD_Microservice.Utils.Extensions;
 using System.Net;
 
 namespace Products_CRUD_Microservice.API.Middlewares
@@ -24,8 +26,7 @@ namespace Products_CRUD_Microservice.API.Middlewares
                 context.Response.ContentType = ex.ContentType;
                 context.Response.StatusCode = ex.StatusCode;
 
-                // TODO: Crear un objeto de respuesta con el error y retornarlo.
-                await context.Response.WriteAsync(ex.Message);
+                await context.Response.WriteAsync(new ApiResponse<string>(ex.StatusCode, ex.Message).ToJSON());
             }
             catch (Exception ex)
             {
