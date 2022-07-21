@@ -2,7 +2,7 @@
 {
     public interface IGetService<T>
     {
-        T? GetById(int id);
-        T? GetByName(string name);
+        T GetById(int id);
+        T GetByName(string name);
     }
 }

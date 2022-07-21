@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Products_CRUD_Microservice.Exceptions;
 using System.Net;
 
 namespace Products_CRUD_Microservice.API.Middlewares
@@ -18,17 +19,21 @@ namespace Products_CRUD_Microservice.API.Middlewares
             {
                 await _next(context);
             }
+            catch (StatusException ex)
+            {
+                context.Response.ContentType = ex.ContentType;
+                context.Response.StatusCode = ex.StatusCode;
 
-            // TODO: Crear excepciones personalizadas con diferentes códigos de estado (por ejemplo, una excepción para mostrar códigos 404 cuando no se encuentre el recurso en base de datos.)
-
+                // TODO: Crear un objeto de respuesta con el error y retornarlo.
+                await context.Response.WriteAsync(ex.Message);
+            }
             catch (Exception ex)
             {
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-                await context.Response.WriteAsync("Se ha producido un error general. Por favor, contacte con un administrador.");
-
                 // TODO: Crear un objeto de respuesta con el error y retornarlo.
+                await context.Response.WriteAsync("Se ha producido un error general. Por favor, contacte con un administrador.");
             }
         }
     }

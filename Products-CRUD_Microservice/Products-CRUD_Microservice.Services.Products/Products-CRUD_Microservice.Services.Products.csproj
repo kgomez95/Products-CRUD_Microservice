@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Products_CRUD_Microservice.Constants.Products\Products_CRUD_Microservice.Constants.Products.csproj" />
+    <ProjectReference Include="..\Products_CRUD_Microservice.Exceptions\Products_CRUD_Microservice.Exceptions.csproj" />
     <ProjectReference Include="..\Products_CRUD_Microservice.Models.Products\Products_CRUD_Microservice.Models.Products.csproj" />
     <ProjectReference Include="..\Products_CRUD_Microservice.Repository.Products\Products_CRUD_Microservice.Repository.Products.csproj" />
     <ProjectReference Include="..\Products_CRUD_Microservice.Services\Products_CRUD_Microservice.Services.csproj" />

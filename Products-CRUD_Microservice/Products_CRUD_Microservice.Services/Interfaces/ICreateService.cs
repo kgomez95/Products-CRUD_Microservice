@@ -2,6 +2,6 @@
 {
     public interface ICreateService<T>
     {
-        T? Create(T recordDTO);
+        T Create(T recordDTO);
     }
 }

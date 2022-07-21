@@ -23,13 +23,7 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
         public IActionResult GetById(int id)
         {
             ProductDTO? productDTO = this._productService.GetById(id);
-
-            if (productDTO != null)
-            {
-                return base.Ok(productDTO);
-            }
-
-            return base.NotFound(string.Format("El producto con ID '{0}' no existe en nuestros sistemas.", id));
+            return base.Ok(productDTO);
         }
 
         [HttpGet(ProductsValues.Controller.Actions.GET_BY_NAME)]
@@ -44,12 +38,6 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
 
             // Llamamos al servicio para realizar la búsqueda del producto filtrando por nombre.
             ProductDTO? productDTO = this._productService.GetByName(name);
-
-            // Si no hay producto devolvemos un error 404.
-            if (productDTO == null)
-            {
-                return base.NotFound(string.Format("El producto con nombre '{0}' no existe en nuestros sistemas.", name));
-            }
 
             // Devolvemos el producto con un estado 200.
             return base.Ok(productDTO);

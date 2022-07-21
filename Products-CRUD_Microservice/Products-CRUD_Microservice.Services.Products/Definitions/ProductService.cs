@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Products_CRUD_Microservice.Exceptions.StatusExceptions;
 using Products_CRUD_Microservice.Models.Products.DAO;
 using Products_CRUD_Microservice.Models.Products.DTO;
 using Products_CRUD_Microservice.Repository.Products.Interfaces;
@@ -17,45 +18,31 @@ namespace Products_CRUD_Microservice.Services.Products.Definitions
             this._productRepository = productRepository;
         }
 
-        public virtual ProductDTO? GetById(int id)
+        public virtual ProductDTO GetById(int id)
         {
-            try
-            {
-                Product? product = this._productRepository.GetById(id);
+            Product? product = this._productRepository.GetById(id);
 
-                if (product == null)
-                {
-                    return null;
-                }
-
-                return this._mapper.Map<ProductDTO>(product);
-            }
-            catch (Exception ex)
+            if (product == null)
             {
-                throw ex;
+                throw new NotFoundException(string.Format("El producto con id '{0}' no existe en nuestros sistemas.", id));
             }
+
+            return this._mapper.Map<ProductDTO>(product);
         }
 
-        public virtual ProductDTO? GetByName(string name)
+        public virtual ProductDTO GetByName(string name)
         {
-            try
-            {
-                Product? product = this._productRepository.GetByName(name);
+            Product? product = this._productRepository.GetByName(name);
 
-                if (product == null)
-                {
-                    return null;
-                }
-
-                return this._mapper.Map<ProductDTO>(product);
-            }
-            catch (Exception ex)
+            if (product == null)
             {
-                throw ex;
+                throw new NotFoundException(string.Format("El producto con nombre '{0}' no existe en nuestros sistemas.", name));
             }
+
+            return this._mapper.Map<ProductDTO>(product);
         }
 
-        public virtual ProductDTO? Create(ProductDTO recordDTO)
+        public virtual ProductDTO Create(ProductDTO recordDTO)
         {
             throw new NotImplementedException();
         }
