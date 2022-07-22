@@ -44,7 +44,14 @@ namespace Products_CRUD_Microservice.Services.Products.Definitions
 
         public virtual ProductDTO Create(ProductDTO recordDTO)
         {
-            throw new NotImplementedException();
+            Product? product = this._productRepository.Create(this._mapper.Map<Product>(recordDTO));
+
+            if (product == null)
+            {
+                throw new NotFoundException("No se ha podido crear el producto. Por favor, contacte con un administrador.");
+            }
+
+            return this._mapper.Map<ProductDTO>(product);
         }
     }
 }

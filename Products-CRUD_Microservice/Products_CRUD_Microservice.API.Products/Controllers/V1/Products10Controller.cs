@@ -54,12 +54,31 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
             return base.StatusCode(response.StatusCode, response);
         }
 
-        [HttpGet(ProductsValues.Controller.Actions.CREATE)]
+        [HttpPost(ProductsValues.Controller.Actions.CREATE)]
         [MapToApiVersion("1.0")]
-        public IActionResult Create()
+        public IActionResult Create([FromBody] ProductDTO requestDTO)
         {
-            return Ok("¡Producto creado!");
+            ApiResponse<ProductDTO>? response = null;
+
+            // Comprobamos que la petición sea correcta. Si no lo es, devolvemos un error 400.
+            if (requestDTO == null)
+            {
+                return base.BadRequest("Es necesario especificar los datos del producto que quiere crear.");
+            }
+
+            // Llamamos al servicio para crear el producto.
+            ProductDTO? productDTO = this._productService.Create(requestDTO);
+            response = new ApiResponse<ProductDTO>((int)HttpStatusCode.OK, productDTO);
+
+            // Devolvemos el producto con un estado 200.
+            return base.StatusCode(response.StatusCode, response);
         }
+
+        // TODO: Crear función para actualizar un producto.
+
+        // TODO: Crear función para borrar un producto.
+
+        // TODO: Crear función para obtener múltiples productos.
 
         //[Route("/error-development")]
         //public IActionResult HandleErrorDevelopment([FromServices] IHostEnvironment hostEnvironment)
