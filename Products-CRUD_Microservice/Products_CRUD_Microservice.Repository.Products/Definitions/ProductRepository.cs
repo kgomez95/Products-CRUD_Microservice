@@ -74,5 +74,39 @@ namespace Products_CRUD_Microservice.Repository.Products.Definitions
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// Actualiza en base de datos el producto proporcionado por parámetros.
+        /// </summary>
+        /// <param name="record">Producto a actualizar.</param>
+        /// <returns>Retorna el producto actualizado o NULL en caso de que no exista.</returns>
+        public virtual Product? Update(Product record)
+        {
+            try
+            {
+                // Buscamos el producto a modificar.
+                Product? product = this.GetById(record.Id);
+
+                if (product == null)
+                {
+                    //throw new NotFoundException()
+                    return null;
+                }
+
+                // Actualizamos el producto y guardamos los cambios.
+                product.Name = record.Name;
+                product.Description = record.Description;
+                product.Price = record.Price;
+                product.Enabled = record.Enabled;
+                this._productContext.SaveChanges();
+
+                return product;
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex, "(ProductRepository -> Create) Record = {0}", (record != null) ? record.ToJSON() : "");
+                throw ex;
+            }
+        }
     }
 }

@@ -53,5 +53,17 @@ namespace Products_CRUD_Microservice.Services.Products.Definitions
 
             return this._mapper.Map<ProductDTO>(product);
         }
+
+        public virtual ProductDTO Update(ProductDTO recordDTO)
+        {
+            Product? product = this._productRepository.Update(this._mapper.Map<Product>(recordDTO));
+
+            if (product == null)
+            {
+                throw new NotFoundException("El producto que ha intentado actualizar no existe.");
+            }
+
+            return this._mapper.Map<ProductDTO>(product);
+        }
     }
 }

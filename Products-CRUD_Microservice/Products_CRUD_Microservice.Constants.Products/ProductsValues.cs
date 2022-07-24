@@ -17,6 +17,7 @@
                 public const string GET_BY_ENABLED = "getByEnabled";
                 public const string GET_BY_ID = "getById";
                 public const string GET_BY_NAME = "getByName";
+                public const string UPDATE = "update";
             }
         }
 
