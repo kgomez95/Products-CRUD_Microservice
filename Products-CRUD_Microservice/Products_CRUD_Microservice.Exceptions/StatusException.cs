@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using Products_CRUD_Microservice.API.Models;
+using System.Net;
 
 namespace Products_CRUD_Microservice.Exceptions
 {
@@ -7,11 +8,13 @@ namespace Products_CRUD_Microservice.Exceptions
         #region Protected variables.
         protected virtual int _statusCode { get; set; }
         protected virtual string _contentType { get; set; }
+        protected virtual ApiError[]? _errors { get; set; }
         #endregion
 
         #region Public variables.
         public virtual int StatusCode { get => this._statusCode; }
         public virtual string ContentType { get => this._contentType; }
+        public virtual ApiError[]? Errors { get => this._errors; }
         #endregion
 
         public StatusException(HttpStatusCode statusCode, string? message)
@@ -23,6 +26,12 @@ namespace Products_CRUD_Microservice.Exceptions
             this._contentType = "application/json";
 
             // TODO: Hacer que el "application/json" esté almacenado en una constante.
+        }
+
+        public StatusException(HttpStatusCode statusCode, ApiError[] errors)
+            : this(statusCode, "")
+        {
+            this._errors = errors;
         }
     }
 }

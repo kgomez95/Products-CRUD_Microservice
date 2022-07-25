@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Products_CRUD_Microservice.API.Models\Products_CRUD_Microservice.API.Models.csproj" />
-  </ItemGroup>
-
 </Project>

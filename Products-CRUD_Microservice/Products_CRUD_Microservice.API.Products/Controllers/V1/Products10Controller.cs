@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Products_CRUD_Microservice.API.Attributes;
 using Products_CRUD_Microservice.API.Models;
 using Products_CRUD_Microservice.Constants.Products;
+using Products_CRUD_Microservice.Exceptions.StatusExceptions;
 using Products_CRUD_Microservice.Models.Products.DTO;
 using Products_CRUD_Microservice.Services.Products.Interfaces;
 using System.Net;
@@ -11,6 +13,7 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
     [ApiVersion("1.0")]
     [ApiExplorerSettings(GroupName = "v1.0")]
     [Route(ProductsValues.Controller.ROUTE)]
+    [ServiceFilter(typeof(ValidationFilterAttribute))]
     public class Products10Controller : ControllerBase
     {
         protected readonly IProductService _productService;
@@ -43,7 +46,8 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
             // Comprobamos que la petición sea correcta. Si no lo es, devolvemos un error 400.
             if (string.IsNullOrEmpty(name))
             {
-                return base.BadRequest("Es necesario especificar un nombre para filtrar por nombre de producto.");
+                // NOTE: Esta condición no es necesaria en este caso, ya que estamos aplicando el atributo "ServiceFilter" a todas las funciones del controlador.
+                throw new BadRequestException("Es necesario especificar un nombre para filtrar por nombre de producto.");
             }
 
             // Llamamos al servicio para realizar la búsqueda del producto filtrando por nombre.
@@ -60,12 +64,6 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
         {
             ApiResponse<ProductDTO>? response = null;
 
-            // Comprobamos que la petición sea correcta. Si no lo es, devolvemos un error 400.
-            if (requestDTO == null)
-            {
-                return base.BadRequest("Es necesario especificar los datos del producto que quiere crear.");
-            }
-
             // Llamamos al servicio para crear el producto.
             ProductDTO? productDTO = this._productService.Create(requestDTO);
             response = new ApiResponse<ProductDTO>((int)HttpStatusCode.OK, productDTO);
@@ -79,12 +77,6 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
         public IActionResult Update([FromBody] ProductDTO requestDTO)
         {
             ApiResponse<ProductDTO>? response = null;
-
-            // Comprobamos que la petición sea correcta. Si no lo es, devolvemos un error 400.
-            if (requestDTO == null)
-            {
-                return base.BadRequest("Es necesario especificar los datos del producto que quiere crear.");
-            }
 
             // Llamamos al servicio para crear el producto.
             ProductDTO? productDTO = this._productService.Update(requestDTO);

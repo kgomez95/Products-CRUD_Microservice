@@ -13,6 +13,7 @@ using Products_CRUD_Microservice.SwaggerVersion;
 using Products_CRUD_Microservice.SwaggerVersion.Models;
 using static System.Net.Mime.MediaTypeNames;
 using Products_CRUD_Microservice.API.Middlewares;
+using Products_CRUD_Microservice.API.Attributes;
 
 // TODO: Crear un proyecto genérico, el cual pueda ser utilizado por todos los microservicios, y que se encargue de inicializar el Program (o Startup) del microservicio en cuestión.
 
@@ -92,6 +93,13 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 // Injección de servicios.
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ValidationFilterAttribute>();
+
+// Deshabilitar auto-validación de modelos.
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 
 WebApplication app = builder.Build();
 

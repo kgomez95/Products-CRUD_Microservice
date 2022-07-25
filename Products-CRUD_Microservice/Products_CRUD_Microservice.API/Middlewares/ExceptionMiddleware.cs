@@ -26,7 +26,14 @@ namespace Products_CRUD_Microservice.API.Middlewares
                 context.Response.ContentType = ex.ContentType;
                 context.Response.StatusCode = ex.StatusCode;
 
-                await context.Response.WriteAsync(new ApiResponse<string>(ex.StatusCode, ex.Message).ToJSON());
+                if (ex.Errors != null)
+                {
+                    await context.Response.WriteAsync(new ApiResponse<string>(ex.StatusCode, ex.Errors).ToJSON());
+                }
+                else
+                {
+                    await context.Response.WriteAsync(new ApiResponse<string>(ex.StatusCode, ex.Message).ToJSON());
+                }
             }
             catch (Exception ex)
             {
