@@ -104,9 +104,37 @@ namespace Products_CRUD_Microservice.Repository.Products.Definitions
             }
             catch (Exception ex)
             {
-                this._logger.LogError(ex, "(ProductRepository -> Create) Record = {0}", (record != null) ? record.ToJSON() : "");
+                this._logger.LogError(ex, "(ProductRepository -> Update) Record = {0}", (record != null) ? record.ToJSON() : "");
                 throw ex;
             }
+        }
+
+        /// <summary>
+        /// Borra de base de datos el producto proporcionado por parámetros.
+        /// </summary>
+        /// <param name="id">Identificador del producto a borrar.</param>
+        /// <returns>Retorna "true" si el producto se borra correctamente o "false" en caso de que no se pueda borrar.</returns>
+        public virtual bool Delete(int id)
+        {
+            try
+            {
+                Product? product = this.GetById(id);
+
+                if (product != null)
+                {
+                    this._productContext.Products.Remove(product);
+                    this._productContext.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex, "(ProductRepository -> Delete) Id = {0}", id);
+                throw ex;
+            }
+
+            return false;
         }
     }
 }

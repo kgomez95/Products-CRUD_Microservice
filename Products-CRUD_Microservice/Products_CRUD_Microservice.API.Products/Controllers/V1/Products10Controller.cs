@@ -86,7 +86,18 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
             return base.StatusCode(response.StatusCode, response);
         }
 
-        // TODO: Crear función para borrar un producto.
+        [HttpDelete(ProductsValues.Controller.Actions.DELETE)]
+        [MapToApiVersion("1.0")]
+        public IActionResult Delete(int id)
+        {
+            ApiResponse<string> response = new ApiResponse<string>((int)HttpStatusCode.OK, String.Format("El producto con ID '{0}' se ha borrado correctamente.", id));
+
+            // Llamamos al servicio para borrar el producto.
+            this._productService.Delete(id);
+
+            // Devolvemos el producto con un estado 200.
+            return base.StatusCode(response.StatusCode, response);
+        }
 
         // TODO: Crear función para obtener múltiples productos.
 

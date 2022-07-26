@@ -26,10 +26,6 @@ namespace Products_CRUD_Microservice.API.Models
             this._data = data;
         }
 
-        public ApiResponse(int statusCode, string? errorMessage)
-            : this(statusCode, errorMessage, null)
-        { }
-
         public ApiResponse(int statusCode, string? errorMessage, string? errorDetails)
             : this(statusCode)
         {

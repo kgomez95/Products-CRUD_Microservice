@@ -65,5 +65,15 @@ namespace Products_CRUD_Microservice.Services.Products.Definitions
 
             return this._mapper.Map<ProductDTO>(product);
         }
+
+        public virtual void Delete(int id)
+        {
+            bool isDeleted = this._productRepository.Delete(id);
+
+            if (!isDeleted)
+            {
+                throw new NotFoundException("El producto que ha intentado borrar no existe.");
+            }
+        }
     }
 }

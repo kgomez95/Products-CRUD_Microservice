@@ -32,7 +32,7 @@ namespace Products_CRUD_Microservice.API.Middlewares
                 }
                 else
                 {
-                    await context.Response.WriteAsync(new ApiResponse<string>(ex.StatusCode, ex.Message).ToJSON());
+                    await context.Response.WriteAsync(new ApiResponse<string>(ex.StatusCode, ex.Message, null).ToJSON());
                 }
             }
             catch (Exception ex)
