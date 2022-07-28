@@ -1,4 +1,6 @@
-﻿namespace Products_CRUD_Microservice.Repository.Interfaces
+﻿using Products_CRUD_Microservice.Utils;
+
+namespace Products_CRUD_Microservice.Repository.Interfaces
 {
     public interface IGetRepository<T>
     {

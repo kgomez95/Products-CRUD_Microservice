@@ -2,6 +2,7 @@
 using Products_CRUD_Microservice.DbContexts.Products.DbContexts;
 using Products_CRUD_Microservice.Models.Products.DAO;
 using Products_CRUD_Microservice.Repository.Products.Interfaces;
+using Products_CRUD_Microservice.Utils;
 using Products_CRUD_Microservice.Utils.Extensions;
 
 namespace Products_CRUD_Microservice.Repository.Products.Definitions
@@ -51,6 +52,57 @@ namespace Products_CRUD_Microservice.Repository.Products.Definitions
             catch (Exception ex)
             {
                 this._logger.LogError(ex, "(ProductRepository -> GetByName) Name = {0}", name ?? "");
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene uno o varios productos filtrando por cualquiera de sus valores.
+        /// </summary>
+        /// <param name="name">Nombre del producto a buscar.</param>
+        /// <param name="description">Descripción del producto a buscar.</param>
+        /// <param name="price">Precio del producto a buscar.</param>
+        /// <param name="createdAt">Fecha de creación del producto a buscar.</param>
+        /// <param name="updatedAt">Fecha de actualización del producto a buscar.</param>
+        /// <param name="enabled">Producto activado o desactivado.</param>
+        /// <returns>Retorna un listado de productos.</returns>
+        public virtual Product[] GetAll(string? name, string? description, double? price, DateTime? createdAt, DateTime? updatedAt, bool? enabled)
+        {
+            // NOTE: Lo normal sería que en vez de coger todos los productos directamente que los cogiera por bloques, es decir, de forma paginada.
+
+            try
+            {
+                // NOTE: También sería una buena idea crear un modelo para recibir todos estos parámetros en un solo objeto y que en dicho objeto
+                //       hubiese una función llamada "GetAllExpression" que sea para utilizarla en la cláusula "Where" (así nos ahorramos tenerla
+                //       dentro de esta función del repositorio).
+
+                Func<Product, bool> expression = (product) =>
+                {
+                    // Realizamos la comprobación de los filtros y las introducimos en un listado de booleans.
+                    bool[] filters = new bool[]
+                    {
+                        (name != null) ? product.Name.Contains(name) : true,
+                        (description != null) ? product.Description.Contains(description) : true,
+                        (price.HasValue) ? product.Price == price : true,
+                        (createdAt.HasValue) ? product.CreatedAt == createdAt.Value : true,
+                        (updatedAt.HasValue) ? product.UpdatedAt == updatedAt.Value : true,
+                        (enabled.HasValue) ? product.Enabled == enabled.Value : true
+                    };
+
+                    // El registro coincide con los filtros en caso de que no haya ningún "false" en el listado "filters".
+                    return !filters.Contains(false);
+                };
+
+                Product[] products = this._productContext.Products.Where(expression).ToArray();
+                return products;
+            }
+            catch (Exception ex)
+            {
+                this._logger.LogError(ex, "(ProductRepository -> GetAll) Name = '{0}'; Description = '{1}'; Price = '{2}'; CreatedAt = '{3}'; UpdatedAt = '{4}'; Enabled = '{5}'", 
+                    name ?? "", description ?? "", (price.HasValue) ? Convert.ToString(price) : "", 
+                    (createdAt.HasValue) ? Convert.ToString(createdAt.Value) : Convert.ToString(DateTime.MinValue), 
+                    (updatedAt.HasValue) ? Convert.ToString(updatedAt.Value) : Convert.ToString(DateTime.MinValue), 
+                    (enabled.HasValue) ? Convert.ToString(enabled.Value) : "");
                 throw ex;
             }
         }

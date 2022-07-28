@@ -4,6 +4,7 @@ using Products_CRUD_Microservice.Models.Products.DAO;
 using Products_CRUD_Microservice.Models.Products.DTO;
 using Products_CRUD_Microservice.Repository.Products.Interfaces;
 using Products_CRUD_Microservice.Services.Products.Interfaces;
+using Products_CRUD_Microservice.Utils;
 
 namespace Products_CRUD_Microservice.Services.Products.Definitions
 {
@@ -40,6 +41,18 @@ namespace Products_CRUD_Microservice.Services.Products.Definitions
             }
 
             return this._mapper.Map<ProductDTO>(product);
+        }
+
+        public virtual ProductDTO[] GetAll(string? name, string? description, double? price, DateTime? createdAt, DateTime? updatedAt, bool? enabled)
+        {
+            Product[] products = this._productRepository.GetAll(name, description, price, createdAt, updatedAt, enabled);
+
+            if (products == null)
+            {
+                throw new NotFoundException("Ha ocurrido un problema al intentar buscar los productos.");
+            }
+
+            return this._mapper.Map<ProductDTO[]>(products);
         }
 
         public virtual ProductDTO Create(ProductDTO recordDTO)

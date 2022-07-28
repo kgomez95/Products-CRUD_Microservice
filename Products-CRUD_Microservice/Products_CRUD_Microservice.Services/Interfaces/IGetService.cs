@@ -1,4 +1,6 @@
-﻿namespace Products_CRUD_Microservice.Services.Interfaces
+﻿using Products_CRUD_Microservice.Utils;
+
+namespace Products_CRUD_Microservice.Services.Interfaces
 {
     public interface IGetService<T>
     {

@@ -5,6 +5,7 @@ using Products_CRUD_Microservice.Constants.Products;
 using Products_CRUD_Microservice.Exceptions.StatusExceptions;
 using Products_CRUD_Microservice.Models.Products.DTO;
 using Products_CRUD_Microservice.Services.Products.Interfaces;
+using Products_CRUD_Microservice.Utils;
 using System.Net;
 
 namespace Products_CRUD_Microservice.API.Products.Controllers.V1
@@ -58,6 +59,20 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
             return base.StatusCode(response.StatusCode, response);
         }
 
+        [HttpGet(ProductsValues.Controller.Actions.GET_ALL)]
+        [MapToApiVersion("1.0")]
+        public IActionResult GetAll(string? name, string? description, double? price, DateTime? createdAt, DateTime? updatedAt, bool? enabled)
+        {
+            ApiResponse<ProductDTO[]>? response = null;
+
+            // Llamamos al servicio para recuperar los productos.
+            ProductDTO[] productsDTO = this._productService.GetAll(name, description, price, createdAt, updatedAt, enabled);
+            response = new ApiResponse<ProductDTO[]>((int)HttpStatusCode.OK, productsDTO);
+
+            // Devolvemos el producto con un estado 200.
+            return base.StatusCode(response.StatusCode, response);
+        }
+
         [HttpPost(ProductsValues.Controller.Actions.CREATE)]
         [MapToApiVersion("1.0")]
         public IActionResult Create([FromBody] ProductDTO requestDTO)
@@ -98,8 +113,6 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
             // Devolvemos el producto con un estado 200.
             return base.StatusCode(response.StatusCode, response);
         }
-
-        // TODO: Crear función para obtener múltiples productos.
 
         //[Route("/error-development")]
         //public IActionResult HandleErrorDevelopment([FromServices] IHostEnvironment hostEnvironment)

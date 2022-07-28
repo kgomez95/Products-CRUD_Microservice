@@ -15,6 +15,7 @@
             {
                 public const string CREATE = "create";
                 public const string DELETE = "delete";
+                public const string GET_ALL = "getAll";
                 public const string GET_BY_ENABLED = "getByEnabled";
                 public const string GET_BY_ID = "getById";
                 public const string GET_BY_NAME = "getByName";
