@@ -5,7 +5,6 @@ using Products_CRUD_Microservice.Constants.Products;
 using Products_CRUD_Microservice.Exceptions.StatusExceptions;
 using Products_CRUD_Microservice.Models.Products.DTO;
 using Products_CRUD_Microservice.Services.Products.Interfaces;
-using Products_CRUD_Microservice.Utils;
 using System.Net;
 
 namespace Products_CRUD_Microservice.API.Products.Controllers.V1
@@ -113,39 +112,5 @@ namespace Products_CRUD_Microservice.API.Products.Controllers.V1
             // Devolvemos el producto con un estado 200.
             return base.StatusCode(response.StatusCode, response);
         }
-
-        //[Route("/error-development")]
-        //public IActionResult HandleErrorDevelopment([FromServices] IHostEnvironment hostEnvironment)
-        //{
-        //    if (!hostEnvironment.IsDevelopment())
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    IExceptionHandlerFeature exceptionHandlerFeature = HttpContext.Features.Get<IExceptionHandlerFeature>()!;
-
-        //    return Problem(
-        //        detail: exceptionHandlerFeature.Error.StackTrace,
-        //        title: exceptionHandlerFeature.Error.Message);
-        //}
-
-        //[Route("/error")]
-        //public IActionResult HandleError([FromServices] IHostEnvironment hostEnvironment)
-        //{
-        //    IExceptionHandlerFeature exceptionHandlerFeature = HttpContext.Features.Get<IExceptionHandlerFeature>()!;
-
-        //    // TODO: Mostrar error general y pintar logs.
-        //    //exceptionHandlerFeature.Error
-
-        //    throw new NotImplementedException();
-        //}
-
-        // TODO: Intentar buscar alguna forma para no estar poniendo siempre "try catch" en todas las funciones del controlador. Intentar buscar algún método que sea común para todas las funciones,
-        //       de forma que se pinte un log con toda la información posible incluyendo la excepción.
-        //       https://docs.microsoft.com/es-es/aspnet/core/web-api/handle-errors?view=aspnetcore-6.0
-
-
-        // TODO: Crear un middleware para controlar las excepciones:
-        //       https://stackoverflow.com/questions/43358224/how-can-i-throw-an-exception-in-an-asp-net-core-webapi-controller-that-returns-a
     }
 }

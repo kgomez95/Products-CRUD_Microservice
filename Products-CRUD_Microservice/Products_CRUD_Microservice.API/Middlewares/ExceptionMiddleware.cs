@@ -37,11 +37,13 @@ namespace Products_CRUD_Microservice.API.Middlewares
             }
             catch (Exception ex)
             {
+                // NOTE: Aquí pintaríamos la excepción en un fichero log.
+
+                // TODO: Hacer que el "application/json" esté almacenado en una constante.
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-                // TODO: Crear un objeto de respuesta con el error y retornarlo.
-                await context.Response.WriteAsync("Se ha producido un error general. Por favor, contacte con un administrador.");
+                await context.Response.WriteAsync(new ApiResponse<string>(context.Response.StatusCode, "Se ha producido un error general. Por favor, contacte con un administrador.", null).ToJSON());
             }
         }
     }
