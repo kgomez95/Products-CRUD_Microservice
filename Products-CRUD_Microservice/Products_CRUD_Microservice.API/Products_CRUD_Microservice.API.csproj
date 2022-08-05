@@ -7,13 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<FrameworkReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ApiExplorer" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Products_CRUD_Microservice.API.Models\Products_CRUD_Microservice.API.Models.csproj" />
     <ProjectReference Include="..\Products_CRUD_Microservice.Exceptions\Products_CRUD_Microservice.Exceptions.csproj" />
+    <ProjectReference Include="..\Products_CRUD_Microservice.SwaggerVersion\Products_CRUD_Microservice.SwaggerVersion.csproj" />
     <ProjectReference Include="..\Products_CRUD_Microservice.Utils\Products_CRUD_Microservice.Utils.csproj" />
   </ItemGroup>
 
