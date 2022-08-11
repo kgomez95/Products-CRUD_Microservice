@@ -2,6 +2,7 @@
 
 namespace Products_CRUD_Microservice.Models.Products.DTO
 {
+    [Serializable]
     public class ProductDTO
     {
         public int Id { get; set; }

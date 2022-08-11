@@ -9,3 +9,6 @@ productStartupService.Init();
 ProductStartupApplication productStartupApplication = new ProductStartupApplication(productStartupService.Builder, productStartupService.SwaggerDocs);
 productStartupApplication.Init();
 productStartupApplication.Run();
+
+
+// TODO: Crear un proyecto para ejecutar pruebas unitarias contra el microservicio de productos.

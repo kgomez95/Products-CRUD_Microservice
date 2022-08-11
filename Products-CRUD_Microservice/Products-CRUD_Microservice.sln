@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products_CRUD_Microservice.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products_CRUD_Microservice.Exceptions", "Products_CRUD_Microservice.Exceptions\Products_CRUD_Microservice.Exceptions.csproj", "{CD0DEE6F-0AF5-4611-B2C4-2DC5D9B33555}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_CRUD_Microservice.API.Models", "Products_CRUD_Microservice.API.Models\Products_CRUD_Microservice.API.Models.csproj", "{C1565FFF-FC4C-4C29-94F5-5A46AB11630C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products_CRUD_Microservice.API.Models", "Products_CRUD_Microservice.API.Models\Products_CRUD_Microservice.API.Models.csproj", "{C1565FFF-FC4C-4C29-94F5-5A46AB11630C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Products_CRUD_Microservice.API.Products.Tests", "Products_CRUD_Microservice.API.Products.Tests\Products_CRUD_Microservice.API.Products.Tests.csproj", "{8FFFEA31-7266-4227-8311-12C30A3E1DA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{C1565FFF-FC4C-4C29-94F5-5A46AB11630C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1565FFF-FC4C-4C29-94F5-5A46AB11630C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1565FFF-FC4C-4C29-94F5-5A46AB11630C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FFFEA31-7266-4227-8311-12C30A3E1DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FFFEA31-7266-4227-8311-12C30A3E1DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FFFEA31-7266-4227-8311-12C30A3E1DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FFFEA31-7266-4227-8311-12C30A3E1DA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
