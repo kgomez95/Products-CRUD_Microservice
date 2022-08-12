@@ -14,6 +14,11 @@ namespace Products_CRUD_Microservice.API.Products.Tests
 
         protected virtual ApiResponse<ProductDTO> GetProductById(int id)
         {
+            return this.GetProductById(Convert.ToString(id));
+        }
+
+        protected virtual ApiResponse<ProductDTO> GetProductById(string id)
+        {
             return new RestClient<ApiResponse<ProductDTO>>(String.Format("https://localhost:7046/api/v1.0/products/getById?id={0}", id))
                 .AddHeader("Accept", "application/json")
                 .Execute();
@@ -41,6 +46,11 @@ namespace Products_CRUD_Microservice.API.Products.Tests
         }
 
         protected virtual ApiResponse<string> DeleteProduct(int id)
+        {
+            return this.DeleteProduct(Convert.ToString(id));
+        }
+
+        protected virtual ApiResponse<string> DeleteProduct(string id)
         {
             return new RestClient<ApiResponse<string>>(String.Format("https://localhost:7046/api/v1.0/products/delete?id={0}", id), HttpMethod.Delete)
                 .AddHeader("Accept", "application/json")
